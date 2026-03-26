@@ -1,11 +1,16 @@
 aid: buildah
 name: Buildah
 description: >-
-  Buildah is a tool for building OCI-compliant container images without requiring a daemon.
+  Buildah is an open-source, Linux-based tool for building OCI-compliant container images without requiring a full container runtime or daemon. It allows you to create images from scratch or using a Dockerfile, with fine-grained control over image layers, and is part of the Containers project alongside Podman and Skopeo.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Containers
+  - Container Images
+  - Build Tools
+  - OCI
+  - Open Source
+  - Daemonless
 url: >-
   https://raw.githubusercontent.com/api-evangelist/buildah/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -15,14 +20,30 @@ apis:
   - aid: buildah:buildah
     name: Buildah
     description: >-
-      Buildah is a tool for building OCI-compliant container images without requiring a daemon.
-    humanURL: https://github.com/api-evangelist/buildah
+      Buildah is an open-source, Linux-based tool for building OCI-compliant container images without requiring a full container runtime or daemon, with fine-grained control over image layers.
+    humanURL: https://buildah.io/
     tags:
       - Containers
-    properties: []
+      - Container Images
+      - Build Tools
+      - OCI
+      - Daemonless
+    properties:
+      - type: Documentation
+        url: https://github.com/containers/buildah/tree/main/docs
+      - type: Getting Started
+        url: https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md
 common:
   - type: Website
-    url: https://github.com/api-evangelist/buildah
+    url: https://buildah.io/
+  - type: Documentation
+    url: https://github.com/containers/buildah/tree/main/docs
+  - type: Getting Started
+    url: https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md
+  - type: GitHub Organization
+    url: https://github.com/containers
+  - type: Blog
+    url: https://buildah.io/blogs/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
