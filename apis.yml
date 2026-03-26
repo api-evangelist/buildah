@@ -1,0 +1,28 @@
+aid: buildah
+name: Buildah
+description: >-
+  Buildah is a tool for building OCI-compliant container images without requiring a daemon.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Containers
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/buildah/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: buildah:buildah
+    name: Buildah
+    description: >-
+      Buildah is a tool for building OCI-compliant container images without requiring a daemon.
+    humanURL: https://github.com/api-evangelist/buildah
+    tags:
+      - Containers
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/buildah
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
