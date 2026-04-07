@@ -5,12 +5,12 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Containers
-  - Container Images
   - Build Tools
+  - Container Images
+  - Containers
+  - Daemonless
   - OCI
   - Open Source
-  - Daemonless
 url: >-
   https://raw.githubusercontent.com/api-evangelist/buildah/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -23,11 +23,11 @@ apis:
       Buildah is an open-source, Linux-based tool for building OCI-compliant container images without requiring a full container runtime or daemon, with fine-grained control over image layers.
     humanURL: https://buildah.io/
     tags:
-      - Containers
-      - Container Images
       - Build Tools
-      - OCI
+      - Container Images
+      - Containers
       - Daemonless
+      - OCI
     properties:
       - type: Documentation
         url: https://github.com/containers/buildah/tree/main/docs
