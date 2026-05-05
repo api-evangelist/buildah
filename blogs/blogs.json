@@ -1,0 +1,13 @@
+{
+  "repo": "buildah",
+  "feeds": [
+    {
+      "source": "https://buildah.io/blogs/",
+      "feed_url": "https://buildah.io/feed.xml",
+      "saved": 10,
+      "title": "buildah.io"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:24:36Z"
+}
