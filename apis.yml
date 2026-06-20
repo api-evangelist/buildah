@@ -9,7 +9,7 @@ description: >-
   part of the containers organization. It is commonly used in Kubernetes-based
   CI/CD pipelines to avoid Docker-in-Docker complexity.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/buildah/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-04-21'
