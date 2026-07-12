@@ -25,6 +25,8 @@ tags:
   - Rootless
 apis: []
 common:
+  - type: DomainSecurity
+    url: security/buildah-domain-security.yml
   - type: Website
     url: https://buildah.io
   - type: Documentation
