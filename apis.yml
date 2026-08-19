@@ -24,7 +24,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/buildah.pn
 url: https://raw.githubusercontent.com/api-evangelist/buildah/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-04-21'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
   - Build Tools
   - CI/CD
