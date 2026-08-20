@@ -32,6 +32,15 @@ tags:
   - Containers
   - Daemonless
   - OCI
+  - Open-Source
+  - Rootless
+tags_raw:
+  - Build Tools
+  - CI/CD
+  - Container Images
+  - Containers
+  - Daemonless
+  - OCI
   - Open Source
   - Rootless
 apis: []
