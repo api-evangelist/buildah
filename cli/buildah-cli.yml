@@ -1,0 +1,199 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://github.com/podman-container-tools/buildah/blob/main/docs/buildah.1.md,
+  https://github.com/podman-container-tools/buildah/blob/main/install.md,
+  https://github.com/podman-container-tools/buildah/tree/main/docs
+name: buildah
+summary: >-
+  Buildah's primary (and only) published interface is its command line tool. The CLI is the
+  product: there is no hosted API, no console, and no network service. Every command is
+  documented as a groff/markdown man page in the project's docs/ directory and shipped with
+  the package.
+binary: buildah
+reference: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah.1.md
+man_pages: https://github.com/podman-container-tools/buildah/tree/main/docs
+version: v1.45.0
+version_command: buildah version
+install:
+  - method: dnf
+    command: sudo dnf -y install buildah
+    platform: Fedora / RHEL 8+ / CentOS Stream
+  - method: apt
+    command: sudo apt-get -y install buildah
+    platform: Debian / Ubuntu
+  - method: pacman
+    command: sudo pacman -S buildah
+    platform: Arch Linux
+  - method: zypper
+    command: sudo zypper install buildah
+    platform: openSUSE
+  - method: emerge
+    command: sudo emerge app-containers/buildah
+    platform: Gentoo
+  - method: source
+    command: make && sudo make install
+    platform: any Linux with Go toolchain
+    docs: https://github.com/podman-container-tools/buildah/blob/main/install.md
+global_flags:
+  - flag: --cgroup-manager
+    description: CGroup manager for container cgroups (cgroupfs or systemd; default systemd).
+  - flag: --imagestore
+    description: Path under which pulled and built image content is stored.
+  - flag: --log-level
+    description: 'Log level: trace, debug, info, warn, error, fatal, panic (default warn).'
+  - flag: --registries-conf
+    description: Path to the registries configuration file.
+  - flag: --registries-conf-dir
+    description: Path to the directory of registry configuration snippets.
+  - flag: --root
+    description: Storage root directory.
+  - flag: --runroot
+    description: Storage state directory.
+  - flag: --short-name-alias-conf
+    description: Path to the cached short-name to fully-qualified-name mapping file.
+  - flag: --storage-driver
+    description: Storage driver to use.
+  - flag: --help, -h
+    description: Show help.
+command_groups:
+  - name: Build and commit
+    commands:
+      - command: buildah build
+        description: Builds an OCI image using instructions in one or more Containerfiles or Dockerfiles.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-build.1.md
+      - command: buildah commit
+        description: Create an image from a working container.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-commit.1.md
+      - command: buildah config
+        description: Update image configuration settings.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-config.1.md
+  - name: Working containers
+    commands:
+      - command: buildah from
+        description: Creates a new working container, either from scratch or from a specified image.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-from.1.md
+      - command: buildah run
+        description: Run a command inside of the container.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-run.1.md
+      - command: buildah containers
+        description: List the working containers and their base images.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-containers.1.md
+      - command: buildah rename
+        description: Rename a local container.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-rename.1.md
+      - command: buildah rm
+        description: Removes one or more working containers.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-rm.1.md
+      - command: buildah unshare
+        description: Launch a command in a user namespace with modified ID mappings.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-unshare.1.md
+  - name: Filesystem manipulation
+    commands:
+      - command: buildah add
+        description: Add the contents of a file, URL, or a directory to the container.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-add.1.md
+      - command: buildah copy
+        description: Copies the contents of a file, URL, or directory into a container's working directory.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-copy.1.md
+      - command: buildah mount
+        description: Mount the working container's root filesystem.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-mount.1.md
+      - command: buildah umount
+        description: Unmount a working container's root file system.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-umount.1.md
+  - name: Images
+    commands:
+      - command: buildah images
+        description: List images in local storage.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-images.1.md
+      - command: buildah inspect
+        description: Inspects the configuration of a container or image.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-inspect.1.md
+      - command: buildah tag
+        description: Add an additional name to a local image.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-tag.1.md
+      - command: buildah rmi
+        description: Removes one or more images.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-rmi.1.md
+      - command: buildah prune
+        description: Cleanup intermediate images as well as build and mount cache.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-prune.1.md
+      - command: buildah mkcw
+        description: Convert a conventional container image into a confidential workload image.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-mkcw.1.md
+  - name: Registries
+    commands:
+      - command: buildah login
+        description: Login to a container registry.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-login.1.md
+      - command: buildah logout
+        description: Logout of a container registry.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-logout.1.md
+      - command: buildah pull
+        description: Pull an image from the specified location.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-pull.1.md
+      - command: buildah push
+        description: Push an image from local storage to elsewhere.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-push.1.md
+  - name: Manifest lists and image indexes
+    commands:
+      - command: buildah manifest
+        description: Create and manipulate manifest lists and image indexes.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-manifest.1.md
+        subcommands:
+          - manifest create
+          - manifest add
+          - manifest annotate
+          - manifest exists
+          - manifest inspect
+          - manifest push
+          - manifest remove
+          - manifest rm
+  - name: Source images
+    commands:
+      - command: buildah source
+        description: Create, push, pull and manage source images and associated source artifacts.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-source.1.md
+        subcommands:
+          - source create
+          - source add
+          - source pull
+          - source push
+  - name: Diagnostics
+    commands:
+      - command: buildah info
+        description: Display Buildah system information.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-info.1.md
+      - command: buildah version
+        description: Display the Buildah version information.
+        man: https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-version.1.md
+key_flows:
+  - name: Build from a Containerfile
+    steps:
+      - buildah build -t myimage .
+      - buildah push myimage docker://quay.io/myorg/myimage:latest
+    docs: https://github.com/podman-container-tools/buildah/blob/main/docs/tutorials/01-intro.md
+  - name: Build from scratch, layer by layer
+    steps:
+      - container=$(buildah from scratch)
+      - buildah copy $container ./app /app
+      - buildah config --entrypoint /app $container
+      - buildah commit $container myimage
+    docs: https://github.com/podman-container-tools/buildah/blob/main/docs/tutorials/01-intro.md
+  - name: Rootless build in CI
+    steps:
+      - buildah unshare
+      - buildah build --isolation chroot -t myimage .
+    docs: https://github.com/podman-container-tools/buildah/blob/main/docs/tutorials/05-openshift-rootless-build.md
+recent_additions:
+  note: >-
+    Commands added in v1.45.0 per CHANGELOG.md and not yet reflected in the buildah.1.md
+    command table.
+  source: https://github.com/podman-container-tools/buildah/blob/main/CHANGELOG.md
+  commands:
+    - buildah mount-sshfs
+    - buildah umount-sshfs
+    - buildah serve-sftp
+shell_completion:
+  note: Cobra-generated shell completion ships with the packaged binary.

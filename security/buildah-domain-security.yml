@@ -1,11 +1,11 @@
-generated: '2026-07-11'
+generated: '2026-09-13'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: buildah.io
   https: true
   tls_version: TLSv1.3
-  cert_expires: Sep 29 14:09:51 2026 GMT
+  cert_expires: Nov 28 15:41:51 2026 GMT
   hsts: false
 domains:
 - domain: buildah.io

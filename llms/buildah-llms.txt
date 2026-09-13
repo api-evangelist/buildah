@@ -1,0 +1,78 @@
+# Buildah
+
+> Buildah is an Apache-2.0 command line tool for building OCI-compliant container images
+> without a container runtime daemon and without root privileges. It is part of the CNCF
+> Podman Container Tools project. Buildah has no hosted API, no SaaS surface and no
+> accounts: the CLI and the Go library `go.podman.io/buildah` are the entire interface.
+
+Important for agents: there is nothing here to call over HTTP. Buildah runs locally. An
+agent works with Buildah by executing `buildah` subcommands on a Linux host, or by
+importing the Go module. Anything that claims to be a hosted Buildah API is not from this
+project.
+
+Latest release: v1.45.0 (2026-07-30).
+Source of truth: https://github.com/podman-container-tools/buildah — note the project moved
+out of the `containers` GitHub organization in 2026; `github.com/containers/buildah`
+redirects and the Go module path is now `go.podman.io/buildah`.
+
+## Start here
+
+- [Project site](https://buildah.io): announcements and release news.
+- [Introduction tutorial](https://github.com/podman-container-tools/buildah/blob/main/docs/tutorials/01-intro.md): building an image from scratch and from a Containerfile.
+- [Install guide](https://github.com/podman-container-tools/buildah/blob/main/install.md): dnf, apt, pacman, zypper, emerge, or build from source.
+- [Tutorials](https://github.com/podman-container-tools/buildah/tree/main/docs/tutorials): registries and repositories, ONBUILD, embedding in a build tool, rootless builds on OpenShift.
+
+## Command reference
+
+- [buildah(1)](https://github.com/podman-container-tools/buildah/blob/main/docs/buildah.1.md): global flags and the full command table.
+- [All man pages](https://github.com/podman-container-tools/buildah/tree/main/docs): one markdown man page per command.
+
+Core commands: `build` (build from a Containerfile or Dockerfile), `from` (create a working
+container), `run` (run a command inside it), `copy` / `add` (put files in it), `config`
+(set image configuration), `commit` (turn it into an image), `push` / `pull` (move images
+to and from OCI registries), `login` / `logout` (registry credentials), `manifest` (multi
+architecture image indexes), `source` (source images and artifacts), `mount` / `umount`,
+`images`, `containers`, `inspect`, `tag`, `rename`, `rm`, `rmi`, `prune`, `mkcw`,
+`unshare`, `info`, `version`.
+
+## Standards
+
+Buildah's default output format is OCI image-spec v1.0. It reads and writes the OCI image
+layout, pushes and pulls against OCI Distribution Spec registries, builds OCI image
+indexes, and delegates `RUN` to an OCI runtime. Docker manifest v2s2/v2s1 output is
+available with `--format docker`. Detail: `conformance/buildah-conformance.yml` in this
+profile.
+
+## Project and governance
+
+- [Roadmap](https://github.com/podman-container-tools/buildah/blob/main/ROADMAP.md): reviewed quarterly with the Podman team.
+- [Governance](https://github.com/podman-container-tools/buildah/blob/main/GOVERNANCE.md) and [Maintainers](https://github.com/podman-container-tools/buildah/blob/main/MAINTAINERS.md).
+- [AI/LLM development policy](https://github.com/podman-container-tools/buildah/blob/main/LLM_POLICY.md): governs AI-assisted contributions to the project.
+- [Changelog](https://github.com/podman-container-tools/buildah/blob/main/CHANGELOG.md) and [release announcements](https://buildah.io/releases).
+- [Contributing](https://github.com/podman-container-tools/buildah/blob/main/CONTRIBUTING.md), [Code of conduct](https://github.com/podman-container-tools/buildah/blob/main/CODE-OF-CONDUCT.md).
+- [Troubleshooting](https://github.com/podman-container-tools/buildah/blob/main/troubleshooting.md).
+
+## Security
+
+Report vulnerabilities privately to security@lists.podman.io. Do not open a public issue.
+Maintainers acknowledge within 3 working days.
+[Policy](https://github.com/podman-container-tools/buildah/blob/main/SECURITY.md) ·
+[Shared Containers policy](https://github.com/containers/common/blob/main/SECURITY.md)
+
+## Support
+
+- [Issue tracker](https://github.com/podman-container-tools/buildah/issues)
+- [Mailing list](https://buildah.io/mailinglist)
+
+## Optional
+
+- [Go package reference](https://pkg.go.dev/go.podman.io/buildah)
+- [Examples](https://github.com/podman-container-tools/buildah/tree/main/examples) and [demos](https://github.com/podman-container-tools/buildah/tree/main/demos)
+- [Podman](https://podman.io) and [Skopeo](https://github.com/podman-container-tools/skopeo), the sibling tools that share Buildah's image and storage libraries.
+
+---
+generated: 2026-09-13
+method: generated
+source: >-
+  apis.yml plus this repository's artifacts; buildah.io/llms.txt returned 404 on
+  2026-09-13, so no provider-published llms.txt exists to save verbatim.

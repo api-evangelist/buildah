@@ -7,7 +7,11 @@ description: >-
   fine-grained control over image layers. Buildah supports rootless builds in
   unprivileged environments and integrates seamlessly with Podman and Skopeo as
   part of the containers organization. It is commonly used in Kubernetes-based
-  CI/CD pipelines to avoid Docker-in-Docker complexity.
+  CI/CD pipelines to avoid Docker-in-Docker complexity. In 2026 the project moved
+  into the podman-container-tools GitHub organization under the CNCF Podman
+  Container Tools project, and its Go module path became go.podman.io/buildah.
+  Buildah publishes no network API: the command line tool and the Go library are
+  the entire interface.
 type: Index
 deliveryModel:
   model: self-hosted
@@ -35,7 +39,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/buildah.png
 url: https://raw.githubusercontent.com/api-evangelist/buildah/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-04-21'
+modified: '2026-09-13'
 specificationVersion: '0.23'
 tags:
   - Build Tools
@@ -59,9 +63,9 @@ tags_raw:
 apis: []
 common:
   - type: IssueTracker
-    url: https://github.com/containers/buildah/issues
+    url: https://github.com/podman-container-tools/buildah/issues
   - type: Releases
-    url: https://github.com/containers/buildah/releases
+    url: https://github.com/podman-container-tools/buildah/releases
   - type: SecurityPolicy
     url: https://github.com/podman-container-tools/buildah/blob/main/SECURITY.md
   - type: CodeOfConduct
@@ -70,19 +74,19 @@ common:
     url: https://github.com/podman-container-tools/buildah/blob/main/CONTRIBUTING.md
   - type: License
     name: Apache-2.0
-    url: https://github.com/containers/buildah/blob/main/LICENSE
+    url: https://github.com/podman-container-tools/buildah/blob/main/LICENSE
   - type: DomainSecurity
     url: security/buildah-domain-security.yml
   - type: Website
     url: https://buildah.io
   - type: Documentation
-    url: https://github.com/containers/buildah/tree/main/docs
+    url: https://github.com/podman-container-tools/buildah/tree/main/docs
   - type: GettingStarted
-    url: https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md
+    url: https://github.com/podman-container-tools/buildah/blob/main/docs/tutorials/01-intro.md
   - type: GitHubRepository
-    url: https://github.com/containers/buildah
+    url: https://github.com/podman-container-tools/buildah
   - type: GitHubOrganization
-    url: https://github.com/containers
+    url: https://github.com/podman-container-tools
   - type: Blog
     url: https://buildah.io/blogs/
   - type: ReleaseNotes
@@ -90,14 +94,38 @@ common:
   - type: MailingList
     url: https://buildah.io/mailinglist
   - type: Tutorials
-    url: https://github.com/containers/buildah/tree/main/docs/tutorials
+    url: https://github.com/podman-container-tools/buildah/tree/main/docs/tutorials
   - type: InstallGuide
-    url: https://github.com/containers/buildah/blob/main/install.md
+    url: https://github.com/podman-container-tools/buildah/blob/main/install.md
+  - type: Roadmap
+    url: https://github.com/podman-container-tools/buildah/blob/main/ROADMAP.md
+  - type: GovernanceRules
+    url: https://github.com/podman-container-tools/buildah/blob/main/GOVERNANCE.md
+  - type: Maintainers
+    url: https://github.com/podman-container-tools/buildah/blob/main/MAINTAINERS.md
+  - type: Support
+    url: https://buildah.io/mailinglist
+  - type: CLI
+    url: cli/buildah-cli.yml
+  - type: Packages
+    url: packages/buildah-packages.yml
+  - type: ChangeLog
+    url: changelog/buildah-changelog.yml
+  - type: Lifecycle
+    url: lifecycle/buildah-lifecycle.yml
+  - type: Conformance
+    url: conformance/buildah-conformance.yml
+  - type: VulnerabilityDisclosure
+    url: security/buildah-vulnerability-disclosure.yml
+  - type: LLMsTxt
+    url: llms/buildah-llms.txt
+  - type: Plans
+    url: plans/buildah-plans-pricing.yml
   - name: Use Cases
     type: UseCases
     data:
       - name: Daemonless Container Image Building
-        url: https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md
+        url: https://github.com/podman-container-tools/buildah/blob/main/docs/tutorials/01-intro.md
         features:
           - No Docker Daemon Required
           - No Root Privileges Required
@@ -106,7 +134,7 @@ common:
           - Scratch-Based Builds
           - Layer-by-Layer Construction
       - name: Kubernetes CI/CD Integration
-        url: https://github.com/containers/buildah/tree/main/docs/tutorials
+        url: https://github.com/podman-container-tools/buildah/tree/main/docs/tutorials
         features:
           - Docker-in-Docker Alternative
           - Kubernetes Native Building
@@ -114,7 +142,7 @@ common:
           - Pipeline Integration
           - Reproducible Builds
       - name: Container Image Analysis and Promotion
-        url: https://github.com/containers/buildah/tree/main/docs
+        url: https://github.com/podman-container-tools/buildah/tree/main/docs
         features:
           - Image Layer Inspection
           - Image Mounting
@@ -133,7 +161,7 @@ common:
     type: Features
     data:
       - name: buildah build
-        url: https://github.com/containers/buildah/tree/main/docs
+        url: https://github.com/podman-container-tools/buildah/tree/main/docs
         features:
           - Dockerfile Build
           - Containerfile Support
@@ -142,7 +170,7 @@ common:
           - Label and Annotation Support
           - Cache Layers
       - name: buildah from / buildah run
-        url: https://github.com/containers/buildah/tree/main/docs
+        url: https://github.com/podman-container-tools/buildah/tree/main/docs
         features:
           - Start from Base Image
           - Run Commands in Container
@@ -150,21 +178,21 @@ common:
           - Set Environment Variables
           - User and Working Directory Config
       - name: buildah commit
-        url: https://github.com/containers/buildah/tree/main/docs
+        url: https://github.com/podman-container-tools/buildah/tree/main/docs
         features:
           - Commit Container to Image
           - OCI Format Output
           - Docker Format Output
           - Image Squashing
       - name: Rootless Builds
-        url: https://github.com/containers/buildah/blob/main/docs/tutorials/01-intro.md
+        url: https://github.com/podman-container-tools/buildah/blob/main/docs/tutorials/01-intro.md
         features:
           - Unprivileged User Builds
           - User Namespace Support
           - Secure Build Environments
           - CI/CD Security Posture
       - name: Registry Integration
-        url: https://github.com/containers/buildah/tree/main/docs
+        url: https://github.com/podman-container-tools/buildah/tree/main/docs
         features:
           - Push to Docker Hub
           - Push to Quay.io
@@ -172,7 +200,7 @@ common:
           - Pull from OCI Registries
           - Authentication Support
       - name: Podman and Skopeo Integration
-        url: https://github.com/containers
+        url: https://github.com/podman-container-tools
         features:
           - Shared Image Storage with Podman
           - Compatible with Skopeo
@@ -181,3 +209,27 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-13'
+  status: enriched
+  artifacts_added: 9
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Buildah is a locally-run Linux command line tool and Go library for building OCI
+    images; it operates no service, so there is no API, no developer portal and no
+    account to create — buildah.io serves only release announcements, an install guide
+    and tutorials, and returns 404 for every /.well-known/ path, /llms.txt and
+    /openapi.json.
+  evidence:
+    - url: https://buildah.io/
+      status: 200
+    - url: https://buildah.io/openapi.json
+      status: 404
+    - url: https://buildah.io/.well-known/api-catalog
+      status: 404
+    - url: https://buildah.io/llms.txt
+      status: 404
+  checked: '2026-09-13'

@@ -1,0 +1,23 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://buildah.io/,
+  https://github.com/podman-container-tools/buildah/blob/main/LICENSE,
+  https://www.cncf.io/projects/podman-container-tools
+name: Buildah plans and pricing
+plan_count: 0
+plans: []
+commercial_model: none
+license: Apache-2.0
+note: >-
+  Buildah publishes no plans, no pricing page, no paid tiers and no "contact sales" gate.
+  It is an Apache-2.0 open-source command line tool distributed under the CNCF Podman
+  Container Tools project and through Linux distribution repositories. There is nothing to
+  buy from the project and no account to create. Commercial support exists only indirectly,
+  through vendors who ship Buildah inside their own products (for example Red Hat
+  Enterprise Linux and OpenShift); that is a vendor's commercial relationship, not a plan
+  the Buildah project publishes, so it is not recorded as one here.
+probed:
+  - url: https://buildah.io/
+    status: 200
+    finding: Navigation is Blogs / Releases / Mailing List / Install / Tutorials / View Code / Edit Website. No pricing, no sign-up, no account surface.

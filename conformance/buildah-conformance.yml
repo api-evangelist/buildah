@@ -1,0 +1,108 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-commit.1.md,
+  https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-build.1.md,
+  https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-push.1.md,
+  https://github.com/podman-container-tools/buildah/blob/main/README.md
+name: Buildah standards conformance
+note: >-
+  Buildah publishes no HTTP API, so the cross-cutting web-API standards this artifact
+  usually records (OAuth2, OIDC, RFC 9457, JSON:API, pagination, idempotency) do not apply
+  and are recorded as `na` rather than false. What Buildah does declare — in its own
+  command reference, not on a marketing page — is conformance to the Open Container
+  Initiative specification family. That is this project's domain standard: an image built
+  by Buildah is consumable by any OCI-conformant runtime or registry with no bespoke
+  connector, which is the entire premise of the tool.
+domain_standard:
+  family: Open Container Initiative (OCI)
+  body: https://opencontainers.org/
+  declared_in_contract: true
+  evidence: >-
+    docs/buildah-commit.1.md and docs/buildah-build.1.md both state, for the --format flag:
+    "Recognized formats include *oci* (OCI image-spec v1.0, the default) and *docker*".
+    The OCI format is the DEFAULT output, not an opt-in compatibility mode.
+conformance:
+  - id: oci-image-spec
+    name: OCI Image Format Specification v1.0
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-commit.1.md
+      — "--format, -f *[oci | docker]* ... Recognized formats include *oci* (OCI image-spec
+      v1.0, the default)".
+    note: Default image output format for `buildah commit` and `buildah build`.
+  - id: oci-image-layout
+    name: OCI Image Layout Specification
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-push.1.md
+      — documents the `oci:/path/to/layout:image:tag` and `oci-archive:/path/to/archive`
+      push transports.
+  - id: oci-distribution-spec
+    name: OCI Distribution Specification
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-push.1.md
+      and buildah-pull.1.md — push/pull against OCI registries (docker:// transport) with
+      selectable manifest types (oci, v2s2, v2s1), implemented via the shared
+      containers/image library.
+  - id: oci-runtime-spec
+    name: OCI Runtime Specification
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-build.1.md
+      — `--runtime` selects "an OCI-compatible runtime"; `--isolation oci` is the default
+      isolation type and is described as "OCI-compatible runtime".
+    note: Buildah delegates `buildah run` and RUN instructions to an OCI runtime (crun/runc).
+  - id: oci-image-index
+    name: OCI Image Index (multi-architecture manifest lists)
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-manifest.1.md
+      — "Create and manipulate manifest lists and image indexes."
+  - id: oci-hooks
+    name: OCI Hooks schema
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-build.1.md
+      — "Buildah currently support both the 1.0.0 and 0.1.0 hook schemas, although the
+      0.1.0 schema is deprecated."
+  - id: dockerfile
+    name: Dockerfile / Containerfile instruction syntax
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/README.md — "Buildah's
+      commands replicate all of the commands that are found in a Dockerfile"; `buildah
+      build` builds "using instructions in one or more Containerfiles or Dockerfiles".
+    note: >-
+      A de-facto standard rather than a chartered one; recorded because interoperability
+      with it is an explicit project goal (docs/containertools and the
+      docker-compatibility demo).
+  - id: docker-image-v2s2
+    name: Docker Image Manifest V2 Schema 2
+    conforms: true
+    evidence: >-
+      https://github.com/podman-container-tools/buildah/blob/main/docs/buildah-commit.1.md
+      — `--format docker` produces the "traditional upstream docker image format"; push
+      supports v2s2 and v2s1 manifest types.
+not_applicable:
+  - id: oauth2
+    reason: No HTTP API and no authorization surface. Registry credentials are handled by `buildah login` against the target registry's own auth, not by Buildah.
+  - id: oidc
+    reason: No identity surface.
+  - id: rfc9457
+    reason: No HTTP API; errors are CLI exit codes and stderr text.
+  - id: pagination
+    reason: No HTTP API.
+  - id: idempotency
+    reason: No HTTP write surface. Build reproducibility is governed by layer caching and --timestamp, not by an idempotency key.
+  - id: json-api
+    reason: No HTTP API.
+  - id: odata
+    reason: No HTTP API.
+compliance_certifications:
+  published: false
+  note: >-
+    No SOC 2, ISO 27001, PCI, HIPAA or FedRAMP certification is published — and none would
+    apply to a locally-run build tool that operates no service and holds no customer data.
+    The `Compliance` and `TrustCenter` pointers are deliberately NOT wired.

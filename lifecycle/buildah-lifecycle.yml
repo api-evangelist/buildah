@@ -1,0 +1,81 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://github.com/podman-container-tools/buildah/blob/main/ROADMAP.md,
+  https://github.com/podman-container-tools/buildah/blob/main/GOVERNANCE.md,
+  https://github.com/podman-container-tools/buildah/blob/main/CHANGELOG.md,
+  https://github.com/podman-container-tools/buildah/releases
+name: Buildah lifecycle and versioning
+surface: >-
+  Buildah ships a CLI and a Go library. It runs no hosted service, so there is nothing for
+  a status page or an SLA to cover — status_page and sla are `na` here rather than absent.
+versioning:
+  scheme: semver
+  current: v1.45.0
+  released: '2026-07-30'
+  applies_to:
+    - the buildah binary
+    - the go.podman.io/buildah Go module
+  policy_documented: false
+  note: >-
+    The project tags releases as vMAJOR.MINOR.PATCH and has stayed on the 1.x line since
+    2019, but publishes no written compatibility or API-stability policy for the Go
+    packages. Consumers of the library (Podman is the largest) track the module through
+    go.mod version bumps rather than a stated contract.
+module_path_change:
+  from: github.com/containers/buildah
+  to: go.podman.io/buildah
+  observed: '2026-09-13'
+  evidence: https://github.com/podman-container-tools/buildah/blob/main/go.mod
+  impact: >-
+    The Go import path changed when the project moved into the podman-container-tools
+    GitHub organization. Both module paths currently resolve to the same v1.45.0 commit on
+    proxy.golang.org because the repository rename is redirected, so existing builds do not
+    break — but this is the single most consequential lifecycle event in the project's
+    recent history and it is not announced in CHANGELOG.md.
+deprecation:
+  policy_published: false
+  sunset_headers: na
+  note: >-
+    No deprecation policy document, no RFC 8594 Sunset/Deprecation headers (there is no HTTP
+    surface to carry them). Command and flag deprecations are announced only in release
+    notes and in `buildah <command> --help` output. The `Deprecation` pointer is therefore
+    NOT wired.
+support_window:
+  policy_published: false
+  observed: >-
+    Patch releases were cut in 2026 for the 1.26, 1.29, 1.33, 1.39, 1.41, 1.43 and 1.44
+    branches, so backports reach releases several years old — but no supported-versions
+    table is published, so a consumer cannot tell which branches are still maintained.
+status_page:
+  applies: false
+  reason: No hosted service. The `StatusPage` pointer is NOT wired.
+sla:
+  applies: false
+  reason: Open-source project, Apache-2.0, no commercial support contract from the project itself.
+roadmap:
+  published: true
+  url: https://github.com/podman-container-tools/buildah/blob/main/ROADMAP.md
+  cadence: Reviewed quarterly alongside the Podman development team; milestones recorded per quarter.
+  themes:
+    - Partial pull support (zstd:chunked)
+    - Improved support for the BuildKit API
+    - Performance and stability improvements
+    - Reductions to the size of the Buildah binary
+governance:
+  published: true
+  url: https://github.com/podman-container-tools/buildah/blob/main/GOVERNANCE.md
+  parent_project: Podman Container Tools (CNCF)
+  parent_governance: https://github.com/podman-container-tools/community/blob/main/GOVERNANCE.md
+  maintainers: https://github.com/podman-container-tools/buildah/blob/main/MAINTAINERS.md
+  note: >-
+    Buildah adopted a formal governance model and MAINTAINERS file in 2025 Q1 as a tracked
+    CNCF milestone in ROADMAP.md — a governance signal most catalog entries at this size
+    do not have.
+ai_policy:
+  published: true
+  url: https://github.com/podman-container-tools/buildah/blob/main/LLM_POLICY.md
+  parent: https://github.com/podman-container-tools/community/blob/main/LLM_POLICY.md
+  note: >-
+    The project publishes an organization-wide LLM (AI) development policy governing
+    AI-assisted contributions. Rare, and directly relevant to agent-era provenance.

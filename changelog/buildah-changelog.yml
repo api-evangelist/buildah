@@ -1,0 +1,83 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://github.com/podman-container-tools/buildah/blob/main/CHANGELOG.md,
+  https://github.com/podman-container-tools/buildah/releases,
+  https://buildah.io/releases
+name: Buildah changelog
+scheme: semver
+current_version: v1.45.0
+current_version_released: '2026-07-30'
+changelog_url: https://github.com/podman-container-tools/buildah/blob/main/CHANGELOG.md
+releases_url: https://github.com/podman-container-tools/buildah/releases
+announcements_url: https://buildah.io/releases
+cadence: >-
+  Minor releases roughly quarterly (1.39 Feb 2025, 1.40 Apr 2025, 1.41 Jul 2025, 1.42 Oct
+  2025, 1.43 Feb 2026, 1.44 May 2026, 1.45 Jul 2026). Patch releases are cut on demand,
+  including long-lived backport branches for older minors (v1.26.x, v1.29.x, v1.33.x,
+  v1.39.x, v1.41.x all received patches in 2026) — a maintenance posture that matters to
+  distributions shipping pinned versions.
+format: >-
+  CHANGELOG.md is a flat, dated, per-release list of commit subjects. It is not
+  categorised into breaking / added / fixed, and the project publishes no separate
+  machine-readable feed of changes. Each minor release also gets a narrative
+  announcement post at buildah.io/releases.
+entries:
+  - version: v1.45.0
+    date: '2026-07-30'
+    breaking: unknown
+    highlights:
+      - 'CLI: add "mount-sshfs", "umount-sshfs"'
+      - 'CLI: add "serve-sftp"'
+      - 'Copier: add Symlink() for creating symlinks with inline target'
+      - 'Copier: add CreateDestPath option to PutOptions'
+      - 'build: accept "FROM containers-storage:" prefixes again'
+      - Handle duplicate stage nicknames
+      - 'chroot: skip setgroups when namespace denies it'
+      - Bump to c/storage 1.64.0, c/image 5.41.0, c/common v0.69.0
+    announcement: https://buildah.io/releases
+  - version: v1.44.1
+    date: '2026-07-21'
+    breaking: unknown
+    highlights:
+      - Patch release on the 1.44 branch.
+  - version: v1.44.0
+    date: '2026-05-27'
+    breaking: unknown
+    highlights:
+      - Minor release; see the announcement post.
+    announcement: https://buildah.io/releases
+  - version: v1.43.2
+    date: '2026-06-08'
+    breaking: unknown
+    highlights:
+      - Patch release on the 1.43 branch.
+  - version: v1.43.1
+    date: '2026-04-08'
+    breaking: unknown
+    highlights:
+      - Patch release on the 1.43 branch.
+  - version: v1.43.0
+    date: '2026-02-06'
+    breaking: unknown
+    highlights:
+      - Minor release; see the announcement post.
+    announcement: https://buildah.io/releases
+backport_branches:
+  note: >-
+    Still receiving patch releases in 2026 — evidence of an active long-tail maintenance
+    policy for distribution consumers.
+  entries:
+    - version: v1.41.9
+      date: '2026-04-17'
+    - version: v1.39.9
+      date: '2026-05-13'
+    - version: v1.33.15
+      date: '2026-05-04'
+    - version: v1.29.8
+      date: '2026-05-07'
+    - version: v1.26.11
+      date: '2026-05-06'
+gaps:
+  - Entries are unclassified — no breaking/added/fixed taxonomy, so a consumer cannot tell an API break from a dependency bump without reading each commit subject.
+  - No machine-readable changelog (no JSON/feed); the releases Atom feed on GitHub is the closest thing.

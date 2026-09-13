@@ -1,0 +1,111 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://proxy.golang.org/go.podman.io/buildah/@latest,
+  https://proxy.golang.org/github.com/containers/buildah/@latest,
+  https://github.com/podman-container-tools/buildah/blob/main/go.mod,
+  https://github.com/podman-container-tools/buildah/blob/main/install.md
+name: Buildah packages and distributions
+note: >-
+  Buildah is a Go program, not a hosted API, so it publishes no client SDKs. What it
+  distributes is (a) the Go module that IS the tool — imported directly by Podman and by
+  other build tooling — and (b) OS packages built by Linux distributions. The Go module
+  path was renamed from github.com/containers/buildah to go.podman.io/buildah when the
+  project moved into the podman-container-tools GitHub organization under the CNCF
+  Podman Container Tools project; both paths currently resolve on the Go module proxy to
+  the same v1.45.0 tag and commit (7ae7d5a4021b24d02a5c281badca8c4d8ebbf442).
+  No npm, PyPI, RubyGems, crates.io, NuGet or Maven package is published (probed; 404).
+packages:
+  - name: go.podman.io/buildah
+    registry: go
+    official: true
+    language: Go
+    version: v1.45.0
+    published: '2026-07-30'
+    url: https://pkg.go.dev/go.podman.io/buildah
+    repository: https://github.com/podman-container-tools/buildah
+    metadata_endpoint: https://proxy.golang.org/go.podman.io/buildah/@latest
+    role: library
+    note: >-
+      Canonical module path declared in go.mod (module go.podman.io/buildah). This is the
+      importable Go API surface (pkg/, define/, imagebuildah/, copier/) as well as the
+      source of the buildah binary.
+  - name: github.com/containers/buildah
+    registry: go
+    official: true
+    language: Go
+    version: v1.45.0
+    published: '2026-07-30'
+    url: https://pkg.go.dev/github.com/containers/buildah
+    repository: https://github.com/containers/buildah
+    metadata_endpoint: https://proxy.golang.org/github.com/containers/buildah/@latest
+    role: library
+    status: legacy-path
+    note: >-
+      Historic module path. Still resolves on proxy.golang.org (same version, same commit)
+      because the GitHub repository rename from containers/buildah to
+      podman-container-tools/buildah is followed by a redirect, but go.mod no longer
+      declares it. New consumers should use go.podman.io/buildah.
+distribution_packages:
+  note: >-
+    Distribution packages are built and versioned by each distribution, not by the Buildah
+    project, so there is no first-party registry metadata endpoint to read a version from.
+    Recorded from the project's own install.md; version and published are null because the
+    upstream project does not publish them.
+  source: https://github.com/podman-container-tools/buildah/blob/main/install.md
+  entries:
+    - name: buildah
+      registry: distro
+      distribution: Fedora
+      official: false
+      install: dnf -y install buildah
+      version: null
+      published: null
+    - name: buildah
+      registry: distro
+      distribution: Debian
+      official: false
+      install: apt-get -y install buildah
+      version: null
+      published: null
+      url: https://packages.debian.org/bookworm/buildah
+    - name: buildah
+      registry: distro
+      distribution: Arch Linux
+      official: false
+      install: pacman -S buildah
+      version: null
+      published: null
+    - name: app-containers/buildah
+      registry: distro
+      distribution: Gentoo
+      official: false
+      install: emerge app-containers/buildah
+      version: null
+      published: null
+      url: https://packages.gentoo.org/packages/app-containers/buildah
+    - name: buildah
+      registry: distro
+      distribution: openSUSE
+      official: false
+      install: zypper install buildah
+      version: null
+      published: null
+    - name: buildah
+      registry: distro
+      distribution: CentOS / RHEL
+      official: false
+      install: yum -y install buildah
+      version: null
+      published: null
+      note: install.md states the packaged version often lags the upstream release.
+absent_registries:
+  - registry: npm
+    probed: https://registry.npmjs.org/buildah
+    status: 404
+  - registry: pypi
+    probed: https://pypi.org/pypi/buildah/json
+    status: 404
+sdk_note: >-
+  No official client SDKs are published and none would be meaningful: Buildah exposes no
+  network API. The `SDKs` pointer is deliberately NOT wired for this provider.

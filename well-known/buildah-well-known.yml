@@ -1,0 +1,76 @@
+generated: '2026-09-13'
+method: probed
+source: live HTTPS probes of every host this record knows
+name: Buildah well-known document probe
+note: >-
+  Every named /.well-known/ path was probed on both hosts the record knows — buildah.io
+  (the project site, a GitHub Pages Jekyll site) and go.podman.io (the Go module vanity
+  host). Nothing is served. www.buildah.io does not resolve. No WellKnown, APICatalog or
+  SecurityTxt pointer is wired, because this file records an absence, not a presence.
+  The project DOES publish a real vulnerability disclosure policy — it just publishes it
+  in the repository rather than at /.well-known/security.txt (see
+  security/buildah-vulnerability-disclosure.yml).
+hosts:
+  - host: buildah.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: go.podman.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+unreachable_hosts:
+  - host: www.buildah.io
+    note: Does not resolve (curl exit, no HTTP status).
+other_probes:
+  - url: https://buildah.io/robots.txt
+    status: 200
+    note: 'User-agent: * / Disallow: (empty) — crawling is fully permitted.'
+  - url: https://buildah.io/sitemap.xml
+    status: 200
+  - url: https://buildah.io/feed.xml
+    status: 200
+  - url: https://buildah.io/llms.txt
+    status: 404
+  - url: https://go.podman.io/llms.txt
+    status: 404
+  - url: https://buildah.io/openapi.json
+    status: 404
