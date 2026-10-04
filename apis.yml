@@ -48,7 +48,7 @@ tags:
   - Containers
   - Daemonless
   - OCI
-  - Open-Source
+  - Open Source
   - Rootless
 tags_raw:
   - Build Tools
@@ -59,6 +59,7 @@ tags_raw:
   - OCI
   - Open Source
   - Rootless
+  - Open-Source
 apis: []
 common:
   - type: IssueTracker
