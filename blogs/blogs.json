@@ -2,6 +2,20 @@
   "repo": "buildah",
   "feeds": [
     {
+      "source": "https://buildah.io/blogs/",
+      "feed_url": "https://buildah.io/blogs/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://buildah.io/feed",
+      "feed_url": "https://buildah.io/feed",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://github.com/podman-container-tools",
       "feed_url": "https://github.com/podman-container-tools",
       "title": "",
@@ -14,17 +28,10 @@
       "title": "",
       "saved": 0,
       "method": "none"
-    },
-    {
-      "source": "https://buildah.io/feed",
-      "feed_url": "https://buildah.io/feed",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
     }
   ],
   "post_count": 24,
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
